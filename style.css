@@ -251,3 +251,95 @@ body {
     height: 60px;
     box-shadow: 0 0 25px rgba(252, 132, 3, 0.6);
 }
+
+/* 1. AZ ÖSSZES LINKEK ÁTSZÍNEZÉSE NARANCSÁRGÁRA */
+a {
+    color: #fc8403 !important; /* A stúdió narancssárga/réz színe */
+    text-decoration: none; /* Eltávolítja az alapértelmezett aláhúzást */
+    transition: color 0.3s ease; /* Szép, lágy átmenet rámutatáskor */
+}
+
+/* Amikor az egérrel rávégy a linkre (Hover állapot) */
+a:hover, a:focus {
+    color: #ffaa44 !important; /* Egy picit világosabb narancssárga rámutatáskor */
+    text-decoration: underline; /* WCAG szabály: hovernél jó, ha aláhúzott lesz a link */
+}
+
+/* Ha a láblécben (footer) lévő linkek még mindig makacskodnának, ez fixálja őket: */
+.footer-link {
+    color: #fc8403 !important;
+}
+.footer-link:hover, .footer-link:focus {
+    color: #ffaa44 !important;
+}
+
+
+/* 2. A BAL FELSŐ LOGÓ FELIRATÁNAK ÁTSZÍNEZÉSE */
+.branding-text {
+    color: #fc8403 !important; /* Narancssárgává teszi a DENKPAUSE feliratot */
+    transition: color 0.3s ease;
+}
+
+/* Opcionális: Ha szeretnéd, hogy a logó szövege is reagáljon, ha rákattintanak/rámutatnak */
+.navbar-brand:hover .branding-text, .navbar-brand:focus .branding-text {
+    color: #ffaa44 !important;
+}
+
+/* --- ÚJ MÁRKAELRENDEZÉS STÍLUSOK --- */
+
+/* A blokkok közötti extra távolság */
+.mb-6 { margin-bottom: 5rem !important; }
+
+/* Kép méretek korlátozása */
+.brand-asset-img {
+    max-height: 120px;
+    width: auto;
+}
+
+/* Az ikonnak kisebbnek kell lennie */
+.icon-mark { max-height: 90px; }
+
+/* --- KLANGMARKE INTERAKTÍV LEJÁTSZÓ --- */
+
+.soundmark-visual-player {
+    position: relative; /* Ehhez rögzítjük a gombot */
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 8px; /* Illeszkedik a wireframe dizájnhoz */
+    border: 2px solid #555; /* Sötét keret */
+    cursor: pointer;
+    max-width: 400px; /* Korlátozzuk a kép szélességét */
+}
+
+.soundmark-bg-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0.6); /* Sötétítjük a képet, hogy a gomb jobban látszódjon */
+    transition: filter 0.3s ease;
+}
+
+.soundmark-visual-player:hover .soundmark-bg-img {
+    filter: brightness(0.8); /* Hoverre kicsit kivilágosodik */
+}
+
+/* A Play gomb a kép közepén */
+.play-overlay-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Tökéletes középre igazítás */
+    background-color: rgba(252, 132, 3, 0.7); /* Réz szín, enyhén átlátszó */
+    border: none;
+    color: #000;
+    font-size: 2.5rem;
+    padding: 15px 30px;
+    border-radius: 50%; /* Kerek gomb */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.play-overlay-button:hover {
+    background-color: rgba(252, 132, 3, 0.9); /* Intenzívebb szín hoverre */
+    transform: translate(-50%, -50%) scale(1.1); /* Kicsit megnő */
+}
