@@ -1,6 +1,3 @@
-/* --- DENKPAUSE STUDIOS - AKADÁLYMENTESÍTETT ÉS JAVÍTOTT STÍLUSLAP --- */
-
-/* 1. ALAPOK */
 body {
     background-color: #0A2411; 
     color: #F4F3EE; 
@@ -8,10 +5,8 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    line-height: 1.6; /* Olvashatóság javítása */
+    line-height: 1.6;
 }
-
-/* WCAG: Skip link stílus (alapból rejtve, tabra megjelenik) */
 .skip-link {
     position: absolute;
     top: -40px;
@@ -24,23 +19,17 @@ body {
     text-decoration: none;
     font-weight: bold;
 }
-
 .skip-link:focus {
     top: 0;
 }
-
-/* WCAG: Látható fókuszkeret minden interaktív elemnek */
 :focus-visible {
     outline: 3px solid #fc8403 !important;
     outline-offset: 4px;
 }
-
-/* 2. FELSŐ MENÜSÁV */
 .navbar-custom {
     background-color: #051208;
     border-bottom: 2px solid rgba(252, 132, 3, 0.5);
 }
-
 .nav-link {
     color: #F4F3EE !important;
     text-transform: uppercase;
@@ -48,11 +37,9 @@ body {
     letter-spacing: 1px;
     transition: 0.3s;
 }
-
 .nav-link:hover, .nav-link:focus {
     color: #fc8403 !important;
 }
-
 .logo-square {
     width: 35px;
     height: 35px;
@@ -60,13 +47,9 @@ body {
     margin-right: 15px;
     display: inline-block;
 }
-
-/* Javított kontrasztú arany/barna szín (#A77E58 helyett világosabb) */
 .branding-text, .feature-title {
     color: #D4A373 !important; /* Világosabb árnyalat a 4.5:1 kontraszthoz */
 }
-
-/* 3. HERO SZEKCIÓ */
 .hero-wide {
     width: 100%;
     min-height: 70vh;
@@ -78,13 +61,11 @@ body {
     display: flex;
     align-items: center;
 }
-
 .hero-content {
     padding: 40px;
     border-left: 5px solid #fc8403;
-    background-color: rgba(5, 18, 8, 0.8); /* Sötétebb háttér a szöveg alatt */
+    background-color: rgba(5, 18, 8, 0.8);
 }
-
 .btn-copper {
     border: 2px solid #fc8403;
     color: #fc8403;
@@ -94,19 +75,15 @@ body {
     text-transform: uppercase;
     transition: all 0.3s ease;
 }
-
 .btn-copper:hover, .btn-copper:focus {
     background: #fc8403;
     color: #0A2411;
 }
-
 .price-tag {
     color: #fc8403;
     font-size: 2rem;
     font-weight: bold;
 }
-
-/* 4. TARTALMI ELEMEK */
 .description-text {
     max-width: 800px;
     margin: 0 auto;
@@ -114,20 +91,15 @@ body {
     line-height: 1.8;
     color: #BDD9BF; 
 }
-
-/* Javított kontrasztú másodlagos szöveg */
 .text-light-muted {
     color: #D1D1D1 !important;
 }
-
 .news-card {
     background-color: rgba(252, 132, 3, 0.05);
     padding: 25px;
     border: 1px solid rgba(252, 132, 3, 0.2);
     height: 100%;
 }
-
-/* --- JAVÍTOTT KÉPKONTÉNER --- */
 .card-img-container {
     width: 100%;
     /* JAVÍTÁS: Négyzetes képarányt használunk (1/1), hogy illeszkedjen a képeidhez */
@@ -137,21 +109,17 @@ body {
     margin-bottom: 20px;
     overflow: hidden;
 }
-
 .card-img-container img {
     width: 100%;
     height: 100%;
     /* Biztosítja, hogy a kép kitöltse a konténert, de ne torzuljon */
     object-fit: cover; 
 }
-
-/* 6. LÁBLÉC */
 .footer-custom {
     background-color: #051208;
     color: #F4F3EE;
     border-top: 1px solid #fc8403;
 }
-
 .footer-link {
     text-decoration: none;
     color: #F4F3EE !important;
@@ -166,10 +134,9 @@ body {
 
 .footer-copyright {
     color: #BDD9BF;
-    opacity: 0.8; /* Megemelt opacitás az olvashatóságért */
+    opacity: 0.8;
 }
 
-/* 200% ZOOM / REFLOW TÁMOGATÁS */
 @media (max-width: 768px) {
     .hero-content {
         border-left: none;
@@ -178,35 +145,34 @@ body {
     }
     
     .display-4 {
-        font-size: 2rem; /* Kisebb betűmobilra, hogy ne lógjon ki */
+        font-size: 2rem;
     }
 }
 
-/* --- COOKIE BANNER --- */
 .cookie-overlay {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(2, 8, 4, 0.98); /* Nagyon sötét, szinte fekete háttér */
-    border-top: 2px solid #fc8403; /* Réz színű csík a tetején */
+    background-color: rgba(2, 8, 4, 0.98);
+    border-top: 2px solid #fc8403;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 1050; /* A Bootstrap navbar felett marad */
-    transform: translateY(100%); /* Alapból le van csúsztatva a képernyőről */
+    z-index: 1050;
+    transform: translateY(100%);
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Ez az osztály hozza fel az ablakot animálva */
+
 .cookie-overlay.show {
     transform: translateY(0);
 }
 
-/* Rejtett állapot, ha már elfogadták */
+
 .cookie-overlay.hidden {
     display: none !important;
 }
 
-/* Halványabb gomb a csak szükséges sütikhez */
+
 #btn-cookie-decline {
     color: #BDD9BF;
     border-color: #BDD9BF;
@@ -219,22 +185,21 @@ body {
 }
 
 
-/* --- SPLASH SCREEN (Csak a főoldalon aktív) --- */
+
 .splash-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #051208; /* Sötét háttér */
-    z-index: 9999; /* Mindent letakar */
+    background-color: #051208;
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: opacity 1.5s ease-out, visibility 1.5s ease-out;
 }
 
-/* Elhalványító animáció gombnyomásra */
 .splash-overlay.fade-out {
     opacity: 0;
     visibility: hidden;
@@ -252,20 +217,19 @@ body {
     box-shadow: 0 0 25px rgba(252, 132, 3, 0.6);
 }
 
-/* 1. AZ ÖSSZES LINKEK ÁTSZÍNEZÉSE NARANCSÁRGÁRA */
+
 a {
-    color: #fc8403 !important; /* A stúdió narancssárga/réz színe */
-    text-decoration: none; /* Eltávolítja az alapértelmezett aláhúzást */
-    transition: color 0.3s ease; /* Szép, lágy átmenet rámutatáskor */
+    color: #fc8403 !important; 
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-/* Amikor az egérrel rávégy a linkre (Hover állapot) */
+
 a:hover, a:focus {
-    color: #ffaa44 !important; /* Egy picit világosabb narancssárga rámutatáskor */
-    text-decoration: underline; /* WCAG szabály: hovernél jó, ha aláhúzott lesz a link */
+    color: #ffaa44 !important;
+    text-decoration: underline;
 }
 
-/* Ha a láblécben (footer) lévő linkek még mindig makacskodnának, ez fixálja őket: */
 .footer-link {
     color: #fc8403 !important;
 }
@@ -274,72 +238,74 @@ a:hover, a:focus {
 }
 
 
-/* 2. A BAL FELSŐ LOGÓ FELIRATÁNAK ÁTSZÍNEZÉSE */
+
 .branding-text {
-    color: #fc8403 !important; /* Narancssárgává teszi a DENKPAUSE feliratot */
+    color: #fc8403 !important;
     transition: color 0.3s ease;
 }
 
-/* Opcionális: Ha szeretnéd, hogy a logó szövege is reagáljon, ha rákattintanak/rámutatnak */
 .navbar-brand:hover .branding-text, .navbar-brand:focus .branding-text {
     color: #ffaa44 !important;
 }
 
-/* --- ÚJ MÁRKAELRENDEZÉS STÍLUSOK --- */
-
-/* A blokkok közötti extra távolság */
 .mb-6 { margin-bottom: 5rem !important; }
 
-/* Kép méretek korlátozása */
+
 .brand-asset-img {
     max-height: 120px;
     width: auto;
 }
-
-/* Az ikonnak kisebbnek kell lennie */
 .icon-mark { max-height: 90px; }
 
-/* --- KLANGMARKE INTERAKTÍV LEJÁTSZÓ --- */
-
 .soundmark-visual-player {
-    position: relative; /* Ehhez rögzítjük a gombot */
+    position: relative;
     display: inline-block;
     overflow: hidden;
-    border-radius: 8px; /* Illeszkedik a wireframe dizájnhoz */
-    border: 2px solid #555; /* Sötét keret */
+    border-radius: 8px;
+    border: 2px solid #555;
     cursor: pointer;
-    max-width: 400px; /* Korlátozzuk a kép szélességét */
+    max-width: 400px;
 }
 
 .soundmark-bg-img {
     width: 100%;
     height: auto;
     display: block;
-    filter: brightness(0.6); /* Sötétítjük a képet, hogy a gomb jobban látszódjon */
+    filter: brightness(0.6);
     transition: filter 0.3s ease;
 }
 
 .soundmark-visual-player:hover .soundmark-bg-img {
-    filter: brightness(0.8); /* Hoverre kicsit kivilágosodik */
+    filter: brightness(0.8);
 }
 
-/* A Play gomb a kép közepén */
+
 .play-overlay-button {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Tökéletes középre igazítás */
-    background-color: rgba(252, 132, 3, 0.7); /* Réz szín, enyhén átlátszó */
+    transform: translate(-50%, -50%);
+    background-color: rgba(252, 132, 3, 0.7);
     border: none;
     color: #000;
     font-size: 2.5rem;
     padding: 15px 30px;
-    border-radius: 50%; /* Kerek gomb */
+    border-radius: 50%;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
 }
 
 .play-overlay-button:hover {
-    background-color: rgba(252, 132, 3, 0.9); /* Intenzívebb szín hoverre */
-    transform: translate(-50%, -50%) scale(1.1); /* Kicsit megnő */
+    background-color: rgba(252, 132, 3, 0.9);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.news-card .feature-title {
+    font-size: 1.4rem !important;
+    margin-bottom: 0.75rem;
+}
+
+.news-card p {
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
 }

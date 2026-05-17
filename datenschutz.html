@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-custom py-3" aria-label="Hauptnavigation">
         <div class="container-fluid px-4 px-lg-5">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <span class="logo-square" aria-hidden="true"></span>
+                <img src="bildmarke.png" alt="Denkpause Logo" style="height: 40px; width: auto;" class="me-3">
                 <span class="fw-bold fs-4 branding-text">DENKPAUSE</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
@@ -122,8 +122,8 @@
             <div class="row align-items-center">
                 <div class="col-md-3 text-center text-md-start mb-4 mb-md-0">
                     <span class="d-inline-flex align-items-center text-decoration-none">
-                        <span class="logo-square" aria-hidden="true"></span>
-                        <span class="fw-bold fs-4 branding-text">DENKPAUSE</span>
+                        <img src="bildmarke.png" alt="" style="height: 40px; width: auto;" class="me-3">
+                         <span class="fw-bold fs-4 branding-text">DENKPAUSE</span>
                     </span>
                 </div>
                 <div class="col-md-9 text-center text-md-end mb-4 mb-md-0">
@@ -147,31 +147,22 @@
             const cookieBanner = document.getElementById("cookie-banner");
             const btnAccept = document.getElementById("btn-cookie-accept");
             const btnDecline = document.getElementById("btn-cookie-decline");
-
-            // Ellenőrizzük, hogy a böngésző memóriájában van-e már mentett döntés
             if (!localStorage.getItem("cookieConsent")) {
-                // Ha nincs, kivesszük a rejtett osztályt, és egy kis késleltetéssel felanimáljuk
                 cookieBanner.classList.remove("hidden");
                 setTimeout(() => {
                     cookieBanner.classList.add("show");
-                }, 500); // Fél másodperccel az oldal betöltése után ugrik fel
-            }
+                }, 500);}
 
-            // Gombnyomás kezelése (egy közös funkció a két gombnak)
+        
             function handleCookieConsent(choice) {
-                // Eltüntetjük a bannert animálva
                 cookieBanner.classList.remove("show");
-                
-                // Megvárjuk, amíg lemegy az animáció (0.5s), majd teljesen eltávolítjuk
                 setTimeout(() => {
                     cookieBanner.classList.add("hidden");
                 }, 500);
 
-                // Elmentjük a döntést a localStorage-ba, így frissítéskor nem jön be újra
                 localStorage.setItem("cookieConsent", choice);
             }
 
-            // Kattintás események hozzárendelése
             btnAccept.addEventListener("click", () => handleCookieConsent("accepted"));
             btnDecline.addEventListener("click", () => handleCookieConsent("declined_optional"));
         });
