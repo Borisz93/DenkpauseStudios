@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
+    <div id="splash-screen" class="splash-overlay">
+        <div class="splash-content text-center">
+            <span class="logo-square splash-logo mb-4" aria-hidden="true"></span>
+            <h2 class="display-5 text-copper fw-bold mb-5">DENKPAUSE STUDIOS</h2>
+            
+            <button id="enter-btn" class="btn btn-copper btn-lg text-uppercase fw-bold">
+                Betreten Sie das Studio
+            </button>
+        </div>
+    </div>
+
+    <audio id="intro-audio" src="denkpause_intro.wav" preload="auto"></audio>
+
+
 
     <div id="cookie-banner" class="cookie-overlay hidden" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
         <div class="container py-3">
@@ -153,6 +168,30 @@
             // Kattintás események hozzárendelése
             btnAccept.addEventListener("click", () => handleCookieConsent("accepted"));
             btnDecline.addEventListener("click", () => handleCookieConsent("declined_optional"));
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const enterBtn = document.getElementById("enter-btn");
+            const splashScreen = document.getElementById("splash-screen");
+            const introAudio = document.getElementById("intro-audio");
+
+            if (enterBtn && splashScreen && introAudio) {
+                enterBtn.addEventListener("click", function() {
+                    // Hang lejátszása
+                    introAudio.play();
+
+                    // Fekete réteg elhalványítása (CSS-ből)
+                    splashScreen.classList.add("fade-out");
+
+                    // 1.5 másodperc után teljesen letöröljük a kijelzőről az akadálymentesítés miatt
+                    setTimeout(function() {
+                        splashScreen.style.display = "none";
+                        splashScreen.setAttribute("aria-hidden", "true");
+                    }, 1500);
+                });
+            }
         });
     </script>
 
