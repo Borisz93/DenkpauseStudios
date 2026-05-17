@@ -90,7 +90,21 @@
                                 <p class="description-text text-mahogany mb-4">Alle visuellen Medien und Grafiken unterliegen dem Schutz des Urheberrechts. Das offizielle Logo von Denkpause Studios – ein stilisiertes Auge mit einer Uhr-Iris – repräsentiert den Spiegel der Seele und das unaufhaltsame Gewicht von getroffenen Entscheidungen und deren Konsequenzen. Alle Rechte an diesem Design verbleiben vollständig beim Studio.</p>
                                 
                                 <h3 class="h5 fw-bold text-mahogany mt-3 mb-2">Schriftarten (Typografie)</h3>
-                                <p class="description-text text-mahogany mb-0">Aus Gründen des Datenschutzes und zur Gewährleistung einer optimalen, barrierefreien Performance verzichtet diese Website auf das Laden externer Schriftbibliotheken. Es werden ausschließlich websichere Systemschriftarten verwendet, die auf den Endgeräten der Nutzer vorinstalliert sind.</p>
+                                <p class="description-text text-mahogany mb-4">Aus Gründen des Datenschutzes und zur Gewährleistung einer optimalen, barrierefreien Performance verzichtet diese Website auf das Laden externer Schriftbibliotheken. Es werden ausschließlich websichere Systemschriftarten verwendet, die auf den Endgeräten der Nutzer vorinstalliert sind.</p>
+                                
+                                <h3 class="h5 fw-bold text-mahogany mt-3 mb-2">KI-generierte Inhalte (Künstliche Intelligenz)</h3>
+                                <p class="description-text text-mahogany mb-4">Im Sinne der Transparenz informieren wir unsere Nutzer, dass bestimmte Bilder und Illustrationen auf der Website sowie das Intro des Spiels mithilfe von Künstlicher Intelligenz (KI) generiert wurden. Diese Inhalte sind gemäß den Bedingungen der jeweiligen KI-Dienste frei nutzbar. Darüber hinaus wurden auch Teile des programmierten Quellcodes der Website mit KI-Unterstützung (Code-Generierung) erstellt.</p>
+                                
+                                <h3 class="h5 fw-bold text-mahogany mt-3 mb-2">Materialien von Dritten (Soundeffekte)</h3>
+                                <p class="description-text text-mahogany mb-4">Das auf der Website zu hörende atmosphärische Hintergrundgeräusch (Regen) stammt von der Plattform Freesound (Quelle: <a href="https://freesound.org/people/giddster/sounds/437339/" target="_blank" rel="noopener noreferrer" class="text-mahogany fw-bold">https://freesound.org/people/giddster/sounds/437339/</a>). Dieses Audiomaterial fällt unter die Creative Commons 0 (CC0) Lizenz, gilt somit als Public Domain und kann ohne Einschränkungen frei verwendet werden.</p>
+                                
+                                <div class="mt-4 p-4 border border-secondary rounded" style="background-color: rgba(10, 36, 17, 0.05);">
+                                    <h4 class="h6 fw-bold text-mahogany mb-3">Atmosphärisches Hintergrundaudio</h4>
+                                    <audio controls class="w-100" aria-label="Audio-Player für Hintergrundregen">
+                                        <source src="rain.mp3" type="audio/mpeg">
+                                        Ihr Browser unterstützt das Audio-Element nicht.
+                                    </audio>
+                                </div>
                             </div>
                         </section>
 
@@ -124,40 +138,50 @@
         </div>
     </footer>
 
+    <div id="cookie-banner" class="cookie-overlay hidden" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
+        <div class="container py-3">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mb-3 mb-lg-0">
+                    <h2 id="cookie-title" class="h5 text-copper fw-bold mb-2">Ihre Privatsphäre ist uns wichtig</h2>
+                    <p id="cookie-desc" class="description-text small mb-0">
+                        Wir verwenden Cookies, um die grundlegenden Funktionen unserer Website zu gewährleisten und um anonymisierte Statistiken zur Verbesserung Ihres Erlebnisses zu sammeln. Weitere Informationen finden Sie in unserer <a href="datenschutz.html" class="text-copper fw-bold">Datenschutzerklärung</a>.
+                    </p>
+                </div>
+                <div class="col-lg-4 d-flex gap-3 justify-content-lg-end">
+                    <button id="btn-cookie-decline" class="btn btn-outline-light btn-sm px-3">Nur notwendige</button>
+                    <button id="btn-cookie-accept" class="btn btn-copper btn-sm px-4">Alle akzeptieren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
             const cookieBanner = document.getElementById("cookie-banner");
             const btnAccept = document.getElementById("btn-cookie-accept");
             const btnDecline = document.getElementById("btn-cookie-decline");
 
-            // Ellenőrizzük, hogy a böngésző memóriájában van-e már mentett döntés
-            if (!localStorage.getItem("cookieConsent")) {
-                // Ha nincs, kivesszük a rejtett osztályt, és egy kis késleltetéssel felanimáljuk
-                cookieBanner.classList.remove("hidden");
-                setTimeout(() => {
-                    cookieBanner.classList.add("show");
-                }, 500); // Fél másodperccel az oldal betöltése után ugrik fel
+            if (cookieBanner && btnAccept && btnDecline) {
+                if (!localStorage.getItem("cookieConsent")) {
+                    cookieBanner.classList.remove("hidden");
+                    setTimeout(() => {
+                        cookieBanner.classList.add("show");
+                    }, 500); 
+                }
+
+                function handleCookieConsent(choice) {
+                    cookieBanner.classList.remove("show");
+                    setTimeout(() => {
+                        cookieBanner.classList.add("hidden");
+                    }, 500);
+                    localStorage.setItem("cookieConsent", choice);
+                }
+
+                btnAccept.addEventListener("click", () => handleCookieConsent("accepted"));
+                btnDecline.addEventListener("click", () => handleCookieConsent("declined_optional"));
             }
-
-            // Gombnyomás kezelése (egy közös funkció a két gombnak)
-            function handleCookieConsent(choice) {
-                // Eltüntetjük a bannert animálva
-                cookieBanner.classList.remove("show");
-                
-                // Megvárjuk, amíg lemegy az animáció (0.5s), majd teljesen eltávolítjuk
-                setTimeout(() => {
-                    cookieBanner.classList.add("hidden");
-                }, 500);
-
-                // Elmentjük a döntést a localStorage-ba, így frissítéskor nem jön be újra
-                localStorage.setItem("cookieConsent", choice);
-            }
-
-            // Kattintás események hozzárendelése
-            btnAccept.addEventListener("click", () => handleCookieConsent("accepted"));
-            btnDecline.addEventListener("click", () => handleCookieConsent("declined_optional"));
         });
     </script>
 
